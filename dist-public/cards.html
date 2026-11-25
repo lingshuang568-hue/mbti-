@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>我的卡牌 · MBTI 抽卡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <a href="index.html" class="topbar-brand">
+        <span class="topbar-brand-icon">🎴</span>
+        <span class="topbar-brand-text">MBTI 抽卡</span>
+      </a>
+      <div class="topbar-right">
+        <div class="remaining-badge">
+          <span class="remaining-dot"></span>
+          剩余 <span id="remaining-count">3</span> 次
+        </div>
+        <a href="cards.html" class="nav-link active">我的卡牌</a>
+      </div>
+    </header>
+
+    <div class="page-header">
+      <div class="page-header-inner">
+        <h1 class="page-title">我的卡牌</h1>
+        <div class="page-stats">
+          共抽 <span class="stat-primary" id="total-draws">0</span> 次 · 分享 <span class="stat-accent" id="total-shares">0</span> 次
+        </div>
+      </div>
+    </div>
+
+    <div class="matrix-section">
+      <div class="progress-info">
+        <span class="label">收集进度 <span class="value"><span id="collected-count">0</span>/16</span></span>
+        <span class="pct" id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar-wrap">
+        <div id="progress-bar-fill" class="progress-bar-fill" style="width:0%"></div>
+      </div>
+      <div id="mbt-matrix" class="mbt-matrix"></div>
+    </div>
+
+    <div class="history-section">
+      <button id="history-toggle" class="history-toggle">
+        <span>抽卡历史（<span id="history-count">0</span>）</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div id="history-list" class="history-list"></div>
+      <div id="history-empty" class="history-empty" style="display:none">
+        还没有抽卡记录，去抽一张吧 🎴
+      </div>
+    </div>
+
+    <div class="cards-cta">
+      <a href="index.html" class="btn-primary">🎴 继续抽卡</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="抽一张属于你的 MBTI 卡牌！ISFP 稀有卡概率 1/144，你能抽到吗？" />
+  <title>MBTI 抽卡牌 · 稀有 ISFP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <a href="index.html" class="topbar-brand">
+        <span class="topbar-brand-icon">🎴</span>
+        <span class="topbar-brand-text">MBTI 抽卡</span>
+      </a>
+      <div class="topbar-right">
+        <div class="remaining-badge">
+          <span class="remaining-dot"></span>
+          剩余 <span id="remaining-count">3</span> 次
+        </div>
+        <a href="cards.html" class="nav-link">我的卡牌</a>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="card-wrapper">
+        <div id="card-inner" class="card-inner">
+          <div class="card-face card-back">
+            <div class="card-back-pattern">✦</div>
+            <div class="card-back-label">MBTI · CARD</div>
+          </div>
+          <div id="card-front" class="card-face card-front"></div>
+        </div>
+        <div id="particle-layer" class="absolute inset-0 pointer-events-none" style="position:absolute;inset:0;overflow:hidden;z-index:20"></div>
+      </div>
+
+      <div id="reveal-info" class="card-reveal-info">
+        <div class="card-reveal-type" id="reveal-type"></div>
+        <div class="card-reveal-name" id="reveal-name"></div>
+      </div>
+
+      <button id="draw-btn" class="btn-primary">🎴 开始抽卡</button>
+
+      <button id="empty-hint" class="empty-hint" style="display:none">次数用完了？点击分享获取更多 →</button>
+
+      <p class="hint-text">
+        ISFP 稀有卡概率 <span class="gold">1/144</span>（≈ 0.69%），其他 15 种各 ≈ 6.62%
+      </p>
+
+      <div class="share-section">
+        <button class="btn-share" data-share>🔗 分享链接再抽一次</button>
+        <p class="share-tip">每次点击都能获得抽奖机会，无限分享无限抽 ✨</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="invite-banner" class="invite-banner"></div>
+
+  <div id="empty-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-emoji">🎴</div>
+      <h3>抽奖次数用完啦！</h3>
+      <p>分享给朋友，每次分享都能获得新的抽奖机会 ✨</p>
+      <button class="btn-primary btn-share" data-share>🔗 分享链接再抽一次</button>
+      <button class="modal-close-btn" onclick="document.getElementById('empty-modal').classList.remove('show')">稍后再说</button>
+    </div>
+  </div>
+
+  <div id="isfp-modal" class="modal-overlay">
+    <div class="modal modal-rare">
+      <div class="modal-emoji">🎉</div>
+      <h2>恭喜你！抽到稀有卡 ISFP</h2>
+      <p>这张卡的概率只有 <span class="highlight-gold">1/144 ≈ 0.69%</span></p>
+      <p class="modal-sub">你就是传说中的天选之人 🌟</p>
+      <button class="btn-primary btn-rare" onclick="document.getElementById('isfp-modal').classList.remove('show')">太棒了！</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // 隐藏/显示 empty-hint 根据剩余次数
+    (function() {
+      const raw = localStorage.getItem('mbti-card-draw-data');
+      if (raw) {
+        const d = JSON.parse(raw);
+        if (d.drawsRemaining <= 0) {
+          document.getElementById('empty-hint').style.display = 'block';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
